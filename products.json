@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "title": "Laptop Pro",
+    "description": "High-performance laptop for professionals.",
+    "code": "LP1001",
+    "price": 3,
+    "status": true,
+    "stock": 50,
+    "category": "Electronics",
+    "thumbnails": [
+      "image1.jpg",
+      "image2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Smartphone X",
+    "description": "Latest smartphone with cutting-edge technology.",
+    "code": "SP2001",
+    "price": 999.99,
+    "status": true,
+    "stock": 100,
+    "category": "Electronics",
+    "thumbnails": []
+  },
+  {
+    "id": 3,
+    "title": "Wireless Headphones",
+    "description": "Noise-cancelling over-ear headphones.",
+    "code": "WH3001",
+    "price": 199.99,
+    "status": true,
+    "stock": 200,
+    "category": "Accessories",
+    "thumbnails": [
+      "headphones.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Smartwatch",
+    "description": "Fitness and health tracking smartwatch.",
+    "code": "SW4001",
+    "price": 249.99,
+    "status": true,
+    "stock": 150,
+    "category": "Wearables",
+    "thumbnails": [
+      "smartwatch.jpg",
+      "smartwatch2.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Bluetooth Speaker",
+    "description": "Portable Bluetooth speaker with rich sound.",
+    "code": "BS5001",
+    "price": 79.99,
+    "status": false,
+    "stock": 0,
+    "category": "Audio",
+    "thumbnails": [
+      "speaker.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Gaming Mouse",
+    "description": "High-precision gaming mouse with RGB lighting.",
+    "code": "GM6001",
+    "price": 59.99,
+    "status": true,
+    "stock": 300,
+    "category": "Accessories",
+    "thumbnails": []
+  },
+  {
+    "id": 7,
+    "title": "4K Monitor",
+    "description": "Ultra HD 4K monitor with stunning clarity.",
+    "code": "M7001",
+    "price": 399.99,
+    "status": true,
+    "stock": 75,
+    "category": "Electronics",
+    "thumbnails": [
+      "monitor.jpg",
+      "monitor2.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Wireless Charger",
+    "description": "Fast wireless charger for smartphones.",
+    "code": "WC8001",
+    "price": 29.99,
+    "status": true,
+    "stock": 500,
+    "category": "Accessories",
+    "thumbnails": []
+  },
+  {
+    "id": 9,
+    "title": "Tablet Pro",
+    "description": "High-end tablet with powerful features.",
+    "code": "TP9001",
+    "price": 849.99,
+    "status": true,
+    "stock": 120,
+    "category": "Electronics",
+    "thumbnails": [
+      "tablet.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "External SSD",
+    "description": "Portable external SSD with high-speed transfer.",
+    "code": "ESD10001",
+    "price": 149.99,
+    "status": true,
+    "stock": 250,
+    "category": "Storage",
+    "thumbnails": []
+  }
+]
