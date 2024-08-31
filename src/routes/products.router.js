@@ -11,7 +11,7 @@ router.get('/products/', (req, res) => {
         res.json(products.slice(0, limit))
     })
     .catch(error => {
-        res.status(501).send(error)
+        res.status(501).json(error)
     })
 })
 
@@ -26,7 +26,7 @@ router.get('/products/:pid', (req, res) => {
         }
     })
     .catch(error => {
-        res.status(501).send({error:"error"})
+        res.status(501).json({error:"error"})
     })
 })
 
@@ -78,7 +78,7 @@ router.post('/products/', (req, res) => {
         res.status(201).json(product)
     })
     .catch(error => {
-        res.status(501).send({error:"error"})
+        res.status(501).json({error:"error en el servidor al guardar nuevo producto"})
     })
 })
 router.put('/products/:pid', (req, res) => {
@@ -102,14 +102,14 @@ router.put('/products/:pid', (req, res) => {
                 console.log(updatedProduct)
                 res.status(200).json(updatedProduct)
             }).catch(error => {
-                res.status(501).send({error:"error al actualizar el producto en el Servidor"})
+                res.status(501).json({error:"error al actualizar el producto en el Servidor"})
             })  
         } else {
             res.status(400).json({ error: "Producto no encontrado" })
         }
     })
     .catch(error => {
-        res.status(501).send({error:"error al obtener el producto del archivo"})
+        res.status(501).json({error:"error al obtener el producto del archivo"})
     })
 })
 
@@ -124,7 +124,7 @@ router.delete('/products/:pid', (req, res) => {
         }
     })
     .catch(error => {
-        res.status(501).send({error:"error al eliminar el producto del archivo"})
+        res.status(501).json({error:"error al eliminar el producto del archivo"})
     })
 })
 

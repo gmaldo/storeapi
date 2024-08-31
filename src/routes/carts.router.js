@@ -8,7 +8,7 @@ router.post('/carts', (req, res) => {
     manager.writeNewCart()
     .then(newCart => res.status(201).json(newCart))
     .catch(error => {
-        res.status(501).send({error:"error al crear el carrito"})
+        res.status(501).json({error:"error al crear el carrito"})
     })
 })
 router.get('/carts/:cid', (req, res) => {
@@ -43,7 +43,7 @@ router.post('/carts/:cid/product/:pid', (req, res) => {
                         res.status(200).json(updatedCart)
                     })
                     .catch(error => {
-                        res.status(501).send({error:"error al actualizar el carrito en el Servidor"})
+                        res.status(501).json({error:"error al actualizar el carrito en el Servidor"})
                     })
                 } else {
                     res.status(400).json({ error: "Carrito no encontrado" })
@@ -54,7 +54,7 @@ router.post('/carts/:cid/product/:pid', (req, res) => {
         }
     })
     .catch(error => {
-        res.status(501).send({error:"error al obtener el producto del archivo"})
+        res.status(501).json({error:"error al obtener el producto del archivo"})
     })
    
 })
