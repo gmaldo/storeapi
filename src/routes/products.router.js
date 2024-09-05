@@ -1,6 +1,7 @@
-const express = require("express")
+import express from "express"
+import PersistenceManager from "../PersistenceManager.js"
+
 const router = express.Router()
-const PersistenceManager = require("../PersistenceManager.js")
 
 const manager = new PersistenceManager()
 
@@ -128,4 +129,5 @@ router.delete('/products/:pid', (req, res) => {
     })
 })
 
-module.exports = router
+//module.exports = router
+export default router

@@ -1,4 +1,4 @@
-const fs = require("fs").promises
+import fs from "fs/promises"
 class PersistenceManager {
     
     constructor() {
@@ -142,4 +142,5 @@ class PersistenceManager {
         }
     } 
 }
-module.exports = PersistenceManager
+//module.exports = PersistenceManager
+export default PersistenceManager

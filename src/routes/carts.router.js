@@ -1,7 +1,7 @@
-const express = require("express")
-const router = express.Router()
-const PersistenceManager = require("../PersistenceManager.js")
+import express from "express"
+import PersistenceManager from "../PersistenceManager.js"
 
+const router = express.Router()
 const manager = new PersistenceManager()
 
 router.post('/carts', (req, res) => {
@@ -58,4 +58,5 @@ router.post('/carts/:cid/product/:pid', (req, res) => {
     })
    
 })
-module.exports = router
+//module.exports = router
+export default router;
