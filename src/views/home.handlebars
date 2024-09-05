@@ -1,18 +1,18 @@
-    <h1>Lista de Productos</h1>
-    <ul>
-        {{#each products}}
-            <li>
-                <strong>ID:</strong> {{id}}<br>
-                <strong>Título:</strong> {{title}}<br>
-                <strong>Descripción:</strong> {{description}}<br>
-                <strong>Código:</strong> {{code}}<br>
-                <strong>Precio:</strong> ${{price}}<br>
-                <strong>Estado:</strong> {{#if status}}Disponible{{else}}No disponible{{/if}}<br>
-                <strong>Stock:</strong> {{stock}} unidades<br>
-                <strong>Categoría:</strong> {{category}}<br>
-                <hr>
-            </li>
-        {{else}}
-            <li>No hay productos disponibles.</li>
-        {{/each}}
-    </ul>
+<h1>Lista de Productos</h1>
+<div class="products-container">
+    {{#each products}}
+    <div class="product-card">
+        <strong>ID:</strong> {{id}}<br>
+        <strong>Título:</strong> {{title}}<br>
+        <strong>Descripción:</strong> {{description}}<br>
+        <strong>Código:</strong> {{code}}<br>
+        <strong>Precio:</strong> <span class="price">${{price}}</span><br>
+        <strong>Estado:</strong> {{#if status}}Disponible{{else}}No disponible{{/if}}<br>
+        <span class="stock">Stock: {{stock}} unidades</span><br>
+        <span class="category">{{category}}</span>
+        <hr>
+    </div>
+    {{else}}
+        <p>No hay productos disponibles.</p>
+    {{/each}}
+</div>
