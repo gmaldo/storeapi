@@ -1,0 +1,18 @@
+    <h1>Lista de Productos</h1>
+    <ul>
+        {{#each products}}
+            <li>
+                <strong>ID:</strong> {{id}}<br>
+                <strong>Título:</strong> {{title}}<br>
+                <strong>Descripción:</strong> {{description}}<br>
+                <strong>Código:</strong> {{code}}<br>
+                <strong>Precio:</strong> ${{price}}<br>
+                <strong>Estado:</strong> {{#if status}}Disponible{{else}}No disponible{{/if}}<br>
+                <strong>Stock:</strong> {{stock}} unidades<br>
+                <strong>Categoría:</strong> {{category}}<br>
+                <hr>
+            </li>
+        {{else}}
+            <li>No hay productos disponibles.</li>
+        {{/each}}
+    </ul>
