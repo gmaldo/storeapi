@@ -13,4 +13,13 @@ router.get('/', (req, res) => {
         res.status(501).json(error)
     })
 })
+router.get('/realtimeproducts', (req, res) => {
+    manager.readProducts()
+    .then(products => {
+        res.render('realTimeProducts', { products })
+    })
+    .catch(error => {
+        res.status(501).json(error)
+    })
+})
 export default router
