@@ -38,27 +38,27 @@ const socketServer = new Server(httpServer)
 
 socketServer.on('connection', socket => {
     console.log("Nuevo cliente conectado")
-    socket.on('message', data => {
-        console.log(data)
-    })
+  
     socket.on('crearProducto', (data) => {
-        console.log('Recieved data', data);
+        //console.log('Recieved data', data);
         //guardar producto en el archivo
         manager.writeNewProduct({ ...data, thumbnails: [] })
         .then(product => {
-            console.log(product)
-            socket.emit('productoCreado', product);
+            //console.log(product)
+            //use socket server porque si habia 2 ventanas no se mostraba de las 2 asi que necesito que sea eliminado de todos los clientes conectados 
+            socketServer.emit('productoCreado', product);
         })
         .catch(error => {
             console.log(error)
         })
     })
     socket.on('deleteProduct', (id) => {
-        console.log('Recieved data', id)
+        console.log('eliminando producto', id)
         manager.deleteProduct(id)
         .then(deleted=>{
             if(deleted){
-                socket.emit('confirmDelete', id)
+                //idem para crear
+                socketServer.emit('confirmDelete', id)
             }
         })
         .catch(error => {

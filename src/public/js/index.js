@@ -40,7 +40,7 @@ myForm.addEventListener('submit', function(event) {
     const price = Number(document.getElementById('price').value)
     const stock = Number(document.getElementById('stock').value)
     const category = document.getElementById('category').value
-    const status = document.getElementById('status').value
+    const status = Boolean(document.getElementById('status').value)
     
     // Emitir el evento 'crearProducto' al servidor con los datos del formulario
     socket.emit('crearProducto', { title, description, code, price, stock, category, status })
