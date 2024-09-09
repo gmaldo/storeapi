@@ -70,7 +70,6 @@ class PersistenceManager {
         try {
             const products = await this.readProducts()
             let index = products.findIndex(prod => prod.id === id)
-            console.log("index" + index)
             if (index !== -1) {
                 products.splice(index, 1)
                 await fs.writeFile(this.productsFile, JSON.stringify(products, null, 2))

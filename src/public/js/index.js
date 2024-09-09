@@ -77,8 +77,12 @@ function deleteProduct(id) {
 
     if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
         socket.emit('deleteProduct', id)   
-        let productCard = document.getElementById(`product-card-${id}`)
-        productCard.remove()
+       
     }
     
 }
+socket.on('confirmDelete',function(id){
+    alert("data"+id)
+    let productCard = document.getElementById(`product-card-${id}`)
+    productCard.remove()
+})

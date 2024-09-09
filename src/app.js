@@ -56,6 +56,14 @@ socketServer.on('connection', socket => {
     socket.on('deleteProduct', (id) => {
         console.log('Recieved data', id)
         manager.deleteProduct(id)
+        .then(deleted=>{
+            if(deleted){
+                socket.emit('confirmDelete', id)
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
     })
 
 })
