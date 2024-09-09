@@ -82,7 +82,6 @@ function deleteProduct(id) {
     
 }
 socket.on('confirmDelete',function(id){
-    alert("data"+id)
     let productCard = document.getElementById(`product-card-${id}`)
     productCard.remove()
 })
