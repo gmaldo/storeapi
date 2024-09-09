@@ -70,10 +70,15 @@ socket.on('productoCreado', function(data) {
         <hr>
     `
     productsContainer.appendChild(productCard)
-    //alert(`Producto creado: ${data.title}`)
 })
 
 function deleteProduct(id) {
-    alert("eliminar" + id)
-    //socket.emit('deleteProduct', id)
+//    alert("eliminar" + id)
+
+    if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+        socket.emit('deleteProduct', id)   
+        let productCard = document.getElementById(`product-card-${id}`)
+        productCard.remove()
+    }
+    
 }

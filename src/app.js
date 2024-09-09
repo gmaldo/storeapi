@@ -52,8 +52,10 @@ socketServer.on('connection', socket => {
         .catch(error => {
             console.log(error)
         })
-        
-        //enviar producto guardado con el id
+    })
+    socket.on('deleteProduct', (id) => {
+        console.log('Recieved data', id)
+        manager.deleteProduct(id)
     })
 
 })
