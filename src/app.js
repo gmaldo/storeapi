@@ -38,14 +38,21 @@ const socketServer = new Server(httpServer)
 
 socketServer.on('connection', socket => {
     console.log("Nuevo cliente conectado")
-  
+    manager.readProducts()
+    .then(products => {
+        socket.emit('products', products)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+      
     socket.on('crearProducto', (data) => {
         //console.log('Recieved data', data);
         //guardar producto en el archivo
         manager.writeNewProduct({ ...data, thumbnails: [] })
         .then(product => {
             //console.log(product)
-            //use socket server porque si habia 2 ventanas no se mostraba de las 2 asi que necesito que sea eliminado de todos los clientes conectados 
+            //use socket server porque si habia 2 ventanas no se mostraba de las 2 asi que necesito que sea eliminado de todos los clientes conectados, la otra era que agrege el producto de manera local y luego un emmit broadcat 
             socketServer.emit('productoCreado', product);
         })
         .catch(error => {

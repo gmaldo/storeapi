@@ -14,12 +14,6 @@ router.get('/', (req, res) => {
     })
 })
 router.get('/realtimeproducts', (req, res) => {
-    manager.readProducts()
-    .then(products => {
-        res.render('realTimeProducts', { products })
-    })
-    .catch(error => {
-        res.status(501).json(error)
-    })
+    res.render('realTimeProducts')
 })
 export default router

@@ -47,6 +47,30 @@ myForm.addEventListener('submit', function(event) {
 
     myForm.reset()
 })
+//first producto list message
+socket.on('products', function(data) {
+    let productsContainer = document.getElementById('porducts-container')
+  
+    data.forEach(product => {
+        let productCard = document.createElement('div')
+        productCard.classList.add('product-card')
+        productCard.id = `product-card-${product.id}`
+    
+        productCard.innerHTML = `
+            <strong>ID:</strong> ${product.id}<br>
+            <strong>Título:</strong> ${product.title}<br>
+            <strong>Descripción:</strong> ${product.description}<br>
+            <strong>Código:</strong> ${product.code}<br>
+            <strong>Precio:</strong> <span class="price">$${product.price}</span><br>
+            <strong>Estado:</strong> ${product.status ? 'Disponible' : 'No disponible'}<br>
+            <span class="stock">Stock: ${product.stock} unidades</span><br>
+            <span class="category">${product.category}</span>
+            <button class="delete-button" id="delete-button-${product.id}" onclick="deleteProduct(${product.id})">Eliminar</button>
+            <hr>
+        `
+        productsContainer.appendChild(productCard)
+    })
+})
 
 // Escuchar respuesta del servidor
 socket.on('productoCreado', function(data) {
