@@ -17,8 +17,12 @@ class PersistenceManager {
     //Generates an id
     async writeNewProduct(product) {
         try {
+            
             const products = await this.readProducts()
-            const id = products.length + 1
+            const timestamp = Date.now().toString();  // Marca de tiempo
+            const randomNum = Math.floor(Math.random() * 10000).toString()
+            const id = Number(timestamp + randomNum)
+        
             const productWithId = { id, ...product }
             products.push(productWithId)
             await fs.writeFile(this.productsFile, JSON.stringify(products, null, 2))
@@ -66,6 +70,7 @@ class PersistenceManager {
         try {
             const products = await this.readProducts()
             let index = products.findIndex(prod => prod.id === id)
+            console.log("index" + index)
             if (index !== -1) {
                 products.splice(index, 1)
                 await fs.writeFile(this.productsFile, JSON.stringify(products, null, 2))
