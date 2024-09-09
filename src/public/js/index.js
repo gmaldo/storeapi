@@ -51,5 +51,29 @@ myForm.addEventListener('submit', function(event) {
 // Escuchar respuesta del servidor
 socket.on('productoCreado', function(data) {
     //hacer una nueva card
-    alert(`Producto creado: ${data.title}`)
+    //alert(data.id)
+    let productsContainer = document.getElementById('porducts-container')
+    let productCard = document.createElement('div')
+    productCard.classList.add('product-card')
+    productCard.id = `product-card-${data.id}`
+
+    productCard.innerHTML = `
+        <strong>ID:</strong> ${data.id}<br>
+        <strong>Título:</strong> ${data.title}<br>
+        <strong>Descripción:</strong> ${data.description}<br>
+        <strong>Código:</strong> ${data.code}<br>
+        <strong>Precio:</strong> <span class="price">$${data.price}</span><br>
+        <strong>Estado:</strong> ${data.status ? 'Disponible' : 'No disponible'}<br>
+        <span class="stock">Stock: ${data.stock} unidades</span><br>
+        <span class="category">${data.category}</span>
+        <button class="delete-button" id="delete-button-${data.id}" onclick="deleteProduct(${data.id})">Eliminar</button>
+        <hr>
+    `
+    productsContainer.appendChild(productCard)
+    //alert(`Producto creado: ${data.title}`)
 })
+
+function deleteProduct(id) {
+    alert("eliminar" + id)
+    //socket.emit('deleteProduct', id)
+}

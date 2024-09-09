@@ -42,11 +42,18 @@ socketServer.on('connection', socket => {
         console.log(data)
     })
     socket.on('crearProducto', (data) => {
-        console.log('Datos del producto recibidos:', data);
+        console.log('Recieved data', data);
         //guardar producto en el archivo
+        manager.writeNewProduct({ ...data, thumbnails: [] })
+        .then(product => {
+            console.log(product)
+            socket.emit('productoCreado', product);
+        })
+        .catch(error => {
+            console.log(error)
+        })
         
         //enviar producto guardado con el id
-        socket.emit('productoCreado', data);
     })
 
 })
