@@ -46,14 +46,14 @@ socketServer.on('connection', socket => {
         console.log(error)
     })
       
-    socket.on('crearProducto', (data) => {
+    socket.on('createProduct', (data) => {
         //console.log('Recieved data', data);
         //guardar producto en el archivo
         manager.writeNewProduct({ ...data, thumbnails: [] })
         .then(product => {
             //console.log(product)
-            //use socket server porque si habia 2 ventanas no se mostraba de las 2 asi que necesito que sea eliminado de todos los clientes conectados, la otra era que agrege el producto de manera local y luego un emmit broadcat 
-            socketServer.emit('productoCreado', product);
+            //use socket server porque si habia 2 ventanas no se mostraba de las 2 asi que necesito que sea mostrado en todos los clientes conectados, la otra era que agrege el producto de manera local y luego un emmit broadcat 
+            socketServer.emit('productCreated', product);
         })
         .catch(error => {
             console.log(error)
@@ -64,7 +64,7 @@ socketServer.on('connection', socket => {
         manager.deleteProduct(id)
         .then(deleted=>{
             if(deleted){
-                //idem para crear
+                //idem lo de crear para eliminar para que se propage a todos los clientes conectados
                 socketServer.emit('confirmDelete', id)
             }
         })

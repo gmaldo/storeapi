@@ -42,14 +42,15 @@ myForm.addEventListener('submit', function(event) {
     const category = document.getElementById('category').value
     const status = Boolean(document.getElementById('status').value)
     
-    // Emitir el evento 'crearProducto' al servidor con los datos del formulario
-    socket.emit('crearProducto', { title, description, code, price, stock, category, status })
+    // Emitir el evento 'createProduct' al servidor con los datos del formulario
+    socket.emit('createProduct', { title, description, code, price, stock, category, status })
 
     myForm.reset()
 })
-//first producto list message
+//first products list message
 socket.on('products', function(data) {
     let productsContainer = document.getElementById('porducts-container')
+    productsContainer.innerHTML = ""
   
     data.forEach(product => {
         let productCard = document.createElement('div')
@@ -72,8 +73,8 @@ socket.on('products', function(data) {
     })
 })
 
-// Escuchar respuesta del servidor
-socket.on('productoCreado', function(data) {
+// Escuchar respuesta del servidor cuando se crea un producto, y agregar el producto a la lista
+socket.on('productCreated', function(data) {
     //hacer una nueva card
     //alert(data.id)
     let productsContainer = document.getElementById('porducts-container')
